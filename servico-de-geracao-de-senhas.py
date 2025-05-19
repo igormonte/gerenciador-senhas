@@ -1,10 +1,25 @@
 import random
 import string
 
-def gerar_senha(tamanho, letras, numeros, simbolos ):
-    if letras == False and numeros == False and simbolos == False:
-        print ("Erro ao gerar senha")
+
+def valida_se_escolheu_tamanho(tamanho):
+    if tamanho == 0:
+        print ("Erro ao gerar senha. Não informou tamanho!")
         exit()
+
+
+def valida_se_tem_clausulas_de_geracao(letras, numeros, simbolos):
+    if letras == False and numeros == False and simbolos == False:
+        print ("Erro ao gerar senha. Não informou nenhuma cláusula para gerar senhas!")
+        exit()
+
+
+def gerar_senha(tamanho, letras, numeros, simbolos ):
+
+    valida_se_escolheu_tamanho(tamanho)
+
+    valida_se_tem_clausulas_de_geracao(letras, numeros, simbolos)
+
     caracteres = "" 
     senha = ""
     if letras == True:
@@ -13,6 +28,7 @@ def gerar_senha(tamanho, letras, numeros, simbolos ):
         caracteres += string.digits
     if simbolos == True:
         caracteres += string.punctuation
+
     for i in range(tamanho):
         senha += senha.join(random.choice(caracteres))
 
