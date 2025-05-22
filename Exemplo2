@@ -1,0 +1,3 @@
+fruta = input("digite o nome de uma fruta:")
+print("A fruta digitada foi: ")
+print(fruta)
